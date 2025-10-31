@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'phone_number',
+        'email_verified_at',
+        'city_id',
+        'province_id',
+        'region_id',
     ];
 
     /**
@@ -44,5 +50,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function region()
+    {
+        $this->belongsTo(Region::class);
+    }
+
+    public function provice()
+    {
+        $this->belongsTo(Province::class);
+    }
+
+    public function city()
+    {
+        $this->belongsTo(City::class);
     }
 }

@@ -4,38 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Province extends Model
+class Region extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     protected $fillable =
     [
-        'region_id',
         'name',
         'code',
         'slug',
     ];
 
-    protected function region()
+
+    public function provinces()
     {
-        $this->belongsTo(Region::class);
+        $this->hasMany(Province::class);
     }
 
-    public function cities()
-    {
-        $this->hasMany(City::class);
-    }
     public function user()
     {
         $this->hasMany(User::class);
     }
 
-    protected function getSlugOptions(): SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
-            ->saveslugsTo('slug');
+            ->saveSlugsTo('slug');
     }
 }
