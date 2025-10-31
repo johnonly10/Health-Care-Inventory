@@ -66,4 +66,24 @@ class User extends Authenticatable
     {
         $this->belongsTo(City::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function purchaseOrders()
+    {
+        return $this->hasMany(PurchaseOrder::class);
+    }
+
+    public function issuedItems()
+    {
+        return $this->hasMany(IssuedItem::class);
+    }
+
+    public function activityLogs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
 }

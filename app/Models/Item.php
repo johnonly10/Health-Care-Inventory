@@ -44,6 +44,26 @@ class Item extends Model
         return $this->belongsTo(StorageCondition::class);
     }
 
+    public function stockLevel()
+    {
+        return $this->hasOne(StockLevel::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function issuedItems()
+    {
+        return $this->hasMany(IssuedItem::class);
+    }
+
+    public function purchaseOrderItems()
+    {
+        return $this->hasMany(PurchaseOrderItem::class);
+    }
+
     public function getSlugOption(): SlugOptions
     {
         return SlugOptions::create()

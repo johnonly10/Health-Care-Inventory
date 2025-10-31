@@ -5,18 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockLevel extends Model
+class PurchaseOrderItem extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'purchase_order_id',
         'item_id',
-        'name',
-        'current_stock',
-        'reserved_stock',
-        'total',
-        'last_restock',
+        'quantity',
+        'unit_price',
     ];
+
+    public function purchaseOrder()
+    {
+        return $this->belongsTo(PurchaseOrder::class);
+    }
 
     public function item()
     {

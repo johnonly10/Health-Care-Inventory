@@ -5,21 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockLevel extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'item_id',
-        'name',
-        'current_stock',
-        'reserved_stock',
-        'total',
-        'last_restock',
+        'user_id',
+        'transaction_type',
+        'quantity',
+        'remarks',
     ];
 
     public function item()
     {
         return $this->belongsTo(Item::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
