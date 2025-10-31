@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
-            $table->foreignId('supllier_id')->constrained('suppliers')->cascadeOnDelete();
+            $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();
             $table->foreignId('item_type_id')->constrained('item_types')->cascadeOnDelete();
-            $table->foreignId('storage_condition_id')->constrained('storage_condition')->cascadeOnDelete();
+            $table->foreignId('storage_condition_id')->constrained('storage_conditions')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description')->nullable();
