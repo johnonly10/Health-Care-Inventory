@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Supplier extends Model
+class StorageCondition extends Model
 {
     use HasFactory;
 
     protected $fillable =
     [
-        'name',
-        'contact_person',
-        'email',
-        'phone',
-        'address',
         'is_active',
+        'description',
+        'code',
+        'name',
     ];
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        $this->hasMany(Item::class);
     }
 }
